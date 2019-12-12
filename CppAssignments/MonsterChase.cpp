@@ -10,7 +10,7 @@
 #include "General/World.h"
 #include "String/String.h"
 #include <thread>
-#include "Parallels/MovementThread.h"
+#include "Parallels/KeyboardInputThread.h"
 #include "Parallels/CollisionThread.h"
 
 using namespace HeapManagerProxy;
@@ -36,40 +36,40 @@ char grid[ROWS][COLS];
 
 
 
-//// Custom new() and delete()
-//// new() with manager
-//void* operator new(size_t n)
-//{
-//	void* ptr = _alloc(manager, n);
-//	return ptr;
-//}
-//
-//// new() with manager and alignment
-//void* operator new(size_t n, unsigned int alignment)
-//{
-//	void* ptr = _alloc(manager, n, alignment);
-//	return ptr;
-//}
-//
-//// new[] with manager
-//void* operator new[](size_t n)
-//{
-//	void* ptr = _alloc(manager, n);
-//	return ptr;
-//}
-//
-//// new[] with manager and alignment
-//void* operator new[](size_t n, unsigned int alignment)
-//{
-//	void* ptr = _alloc(manager, n, alignment);
-//	return ptr;
-//}
-//
-//// delete
-//void operator delete(void * p) noexcept
-//{
-//	_free(manager, p);
-//}
+// Custom new() and delete()
+// new() with manager
+void* operator new(size_t n)
+{
+	void* ptr = _alloc(manager, n);
+	return ptr;
+}
+
+// new() with manager and alignment
+void* operator new(size_t n, unsigned int alignment)
+{
+	void* ptr = _alloc(manager, n, alignment);
+	return ptr;
+}
+
+// new[] with manager
+void* operator new[](size_t n)
+{
+	void* ptr = _alloc(manager, n);
+	return ptr;
+}
+
+// new[] with manager and alignment
+void* operator new[](size_t n, unsigned int alignment)
+{
+	void* ptr = _alloc(manager, n, alignment);
+	return ptr;
+}
+
+// delete
+void operator delete(void * p) noexcept
+{
+	_free(manager, p);
+}
 
 
 
@@ -127,9 +127,8 @@ void printStates(World* world) {
 		
 		if (actor->name)
 			printf("%s)", actor->name);
-		
-		std::cout << ")";
 	}
+	printf("\n\n");
 }
 Vector2 randomPosition() {
 	return Vector2{
@@ -211,7 +210,7 @@ bool checkGameOver(Actor* &player, Actor** &monsters, int &nMonsters) {
 
 
 
-//#define CUSTOM_TEST
+#define CUSTOM_TEST
 int main()
 {
 #ifndef CUSTOM_TEST
@@ -219,8 +218,16 @@ int main()
 	return 0;
 #else
 	{
+		// INIT CUSTOM MEMORY MANGER
+		const size_t 		sizeHeap = 1024 * 1024;
+		const unsigned int 	numDescriptors = 2048;
+		void* pHeapMemory = HeapAlloc(GetProcessHeap(), 0, sizeHeap);
+		manager = create(pHeapMemory, sizeHeap, numDescriptors);
+		
+
+		// START THE GAME
 		int nMoves = 0;
-		char* name = (char*)malloc(1);
+		char* name = new char[1];
 
 		
 
@@ -240,7 +247,10 @@ int main()
 
 		
 		// Create TestMonster
-		Actor *monster = world->SpawnActor(nullptr, Vector2(0, 0));
+		std::cout << "\nEnter monster name\n->";
+		name = new char[1];
+		String::ReadString(name);
+		Actor *monster = world->SpawnActor(name, Vector2(0, 0));
 		monster->AddComponent(new RandomMovementComponent(10.f));
 		monster->AddComponent(new WrapAroundComponent(0, 0, COLS, ROWS));
 		monster->AddComponent(new CircleColliderComponent(1.f));
@@ -249,7 +259,7 @@ int main()
 		
 		// Begin Simulation
 		world->BeginPlayAll();
-		std::thread keyboardInputThread(MovementThread(world), 0);				// Keyboard input thread
+		std::thread keyboardInputThread(KeyboardInputThread(world), 0);				// Keyboard input thread
 		std::thread collisionCheckThread(CollisionThread(world), 0);		// Collision input thread
 		
 		while (true)
@@ -258,19 +268,22 @@ int main()
 			if (world->GetIsGamePaused()) continue;
 
 			system("CLS");
-			std::cout << "Use W/A/S/D to make a move (M => Add monster | P => Pause | Q => Exit)\n->";
+			std::cout << "Use W/A/S/D to make a move (M => Add monster | P => Pause | Q => Exit)\n";
 
 			world->TickAll();
 			printGrid(world);
 			printStates(world);
 			nMoves++;
 		}
-		keyboardInputThread.join();
 		collisionCheckThread.join();
+		keyboardInputThread.detach();
+		
 
 		// Cleaning up
 		world->DeleteAllActors();
 		delete world;
+
+		printf("\n\nYou'll find one undeleted memory in the output which is from the KeyboardInputThread, since it's still waiting for user input and we cannot use join() on it. I decided to detach the thread instead (Temporary fix)\n\n");
 	}
 
 	_CrtDumpMemoryLeaks();

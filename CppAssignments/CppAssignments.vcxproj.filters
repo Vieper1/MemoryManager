@@ -27,18 +27,18 @@
     <ClCompile Include="HeapManager_UnitTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Parallels\MovementThread.cpp">
+    <ClCompile Include="Parallels\CollisionThread.cpp">
       <Filter>Source Files\Parallels</Filter>
     </ClCompile>
-    <ClCompile Include="Parallels\CollisionThread.cpp">
+    <ClCompile Include="Parallels\KeyboardInputThread.cpp">
       <Filter>Source Files\Parallels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Parallels\MovementThread.h">
+    <ClInclude Include="Parallels\CollisionThread.h">
       <Filter>Header Files\Parallels</Filter>
     </ClInclude>
-    <ClInclude Include="Parallels\CollisionThread.h">
+    <ClInclude Include="Parallels\KeyboardInputThread.h">
       <Filter>Header Files\Parallels</Filter>
     </ClInclude>
   </ItemGroup>

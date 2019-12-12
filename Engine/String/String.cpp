@@ -2,17 +2,27 @@
 
 #include "String.h"
 
-bool String::ReadString(char*& str)
+bool String::ReadString(char* &str)
 {
 	int size = 0;
 	char c;
 
 	while ((c = std::cin.get()) != '\n')
 	{
-#pragma warning(suppress: 6308)
-		str = (char*)realloc(str, sizeof(char) * ++size);
-		if (str != NULL)
+		if (size > 0)
+		{
+			char* temp = new char[size];
+			StringCopy(str, temp, size);
+			delete[] str;
+			str = new char[++size + 1];
 			str[size - 1] = c;
+			StringCopy(temp, str, size - 1);
+			delete[] temp;
+		}
+		else
+		{
+			str[size++] = c;
+		}
 	}
 	str[size] = '\0';
 	if (str == nullptr)
@@ -47,4 +57,12 @@ size_t String::GetLength(const char* str)
 		i++;
 	}
 	return i;
+}
+
+void String::StringCopy(const char* inStr, char* &outStr, size_t len)
+{
+	for (size_t i = 0; i < len; i++)
+	{
+		outStr[i] = inStr[i];
+	}
 }

@@ -14,15 +14,12 @@ Actor::Actor(World* world, char* name, Vector2 position)
 }
 Actor::~Actor()
 {
-	if (this->name)
-		free(this->name);
-	
-	while (!mComponents.empty())
-	{
-		delete mComponents.front();
-	}
+	delete[] this->name;
 
-	printf("Actor Destructor Called!");
+	for (IActorComponent* component : mComponents)
+	{
+		delete component;
+	}
 }
 Actor &Actor::operator = (const Actor &other)
 {
@@ -79,6 +76,10 @@ void Actor::AddComponent(IActorComponent* actorComponent)
 // Collision
 void Actor::OnCollisionEnter(Actor* otherActor)
 {
-	printf("Collided with %s", otherActor->name);
+	printf("\n[[[[[Collided with %s]]]]]\n", otherActor->name);
+	if (otherActor == world_->GetPlayerActor() || this == world_->GetPlayerActor())
+	{
+		world_->EndPlay();
+	}
 }
 // Collision

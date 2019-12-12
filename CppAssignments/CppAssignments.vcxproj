@@ -22,11 +22,11 @@
     <ClCompile Include="HeapManager_UnitTest.cpp" />
     <ClCompile Include="MonsterChase.cpp" />
     <ClCompile Include="Parallels\CollisionThread.cpp" />
-    <ClCompile Include="Parallels\MovementThread.cpp" />
+    <ClCompile Include="Parallels\KeyboardInputThread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Parallels\CollisionThread.h" />
-    <ClInclude Include="Parallels\MovementThread.h" />
+    <ClInclude Include="Parallels\KeyboardInputThread.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
