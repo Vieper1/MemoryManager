@@ -19,21 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine.h" />
     <ClInclude Include="General\Actor.h" />
     <ClInclude Include="General\CustomComponents.h" />
     <ClInclude Include="General\IActorComponent.h" />
     <ClInclude Include="General\World.h" />
     <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Math\Vector.h" />
-    <ClInclude Include="Memory\MemoryManager.h" />
+    <ClInclude Include="Memory\BitArray.h" />
+    <ClInclude Include="Memory\FixedSizeAllocator.h" />
+    <ClInclude Include="Memory\MemorySystem.h" />
+    <ClInclude Include="Memory\PoolAllocator.h" />
     <ClInclude Include="String\String.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="General\Actor.cpp" />
     <ClCompile Include="General\World.cpp" />
-    <ClCompile Include="Memory\MemoryManager.cpp" />
+    <ClCompile Include="Memory\BitArray.cpp" />
+    <ClCompile Include="Memory\FixedSizeAllocator.cpp" />
+    <ClCompile Include="Memory\MemorySystem.cpp" />
+    <ClCompile Include="Memory\PoolAllocator.cpp" />
     <ClCompile Include="String\String.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

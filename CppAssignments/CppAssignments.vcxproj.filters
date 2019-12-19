@@ -24,9 +24,6 @@
     <ClCompile Include="MonsterChase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HeapManager_UnitTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Parallels\CollisionThread.cpp">
       <Filter>Source Files\Parallels</Filter>
     </ClCompile>

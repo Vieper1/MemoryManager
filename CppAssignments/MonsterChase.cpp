@@ -1,75 +1,21 @@
 // CppAssignments.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "Engine.h"
 #include <iostream>
-#include <Windows.h>
 #include <cassert>
-#include "Memory/MemoryManager.h"
-#include "General/CustomComponents.h"
 #include "General/World.h"
 #include "String/String.h"
 #include <thread>
+#include <algorithm>
+#include "Memory/MemorySystem.h"
+#include "General/CustomComponents.h"
 #include "Parallels/KeyboardInputThread.h"
 #include "Parallels/CollisionThread.h"
-
-using namespace HeapManagerProxy;
-extern bool HeapManager_UnitTest();
-
-MemoryManager* manager;
-
-
-
-
-
-
+#include <conio.h>
 
 
 ////////////////////////////////////////////////////////////////////// Declarations
-#define ROWS 10
-#define COLS 10
 char grid[ROWS][COLS];
-////////////////////////////////////////////////////////////////////// Declarations
-
-
-
-
-
-
-// Custom new() and delete()
-// new() with manager
-void* operator new(size_t n)
-{
-	void* ptr = _alloc(manager, n);
-	return ptr;
-}
-
-// new() with manager and alignment
-void* operator new(size_t n, unsigned int alignment)
-{
-	void* ptr = _alloc(manager, n, alignment);
-	return ptr;
-}
-
-// new[] with manager
-void* operator new[](size_t n)
-{
-	void* ptr = _alloc(manager, n);
-	return ptr;
-}
-
-// new[] with manager and alignment
-void* operator new[](size_t n, unsigned int alignment)
-{
-	void* ptr = _alloc(manager, n, alignment);
-	return ptr;
-}
-
-// delete
-void operator delete(void * p) noexcept
-{
-	_free(manager, p);
-}
 
 
 
@@ -127,6 +73,8 @@ void printStates(World* world) {
 		
 		if (actor->name)
 			printf("%s)", actor->name);
+		else
+			printf(")");
 	}
 	printf("\n\n");
 }
@@ -191,7 +139,6 @@ bool checkGameOver(Actor* &player, Actor** &monsters, int &nMonsters) {
 	}
 	return false;
 }
-////////////////////////////////////////////////////////////////////// Utilities
 
 
 
@@ -209,44 +156,49 @@ bool checkGameOver(Actor* &player, Actor** &monsters, int &nMonsters) {
 
 
 
+#define GAME
+//#define UNIT_TEST
 
-#define CUSTOM_TEST
+
+
+
+
+
+// Declare UnitTest
+using namespace HeapManagerProxy;
+bool MemorySystem_UnitTest();
+
 int main()
 {
-#ifndef CUSTOM_TEST
-	HeapManager_UnitTest();
-	return 0;
-#else
+	InitializeMemorySystem();
+
+	
+#ifdef GAME
 	{
-		// INIT CUSTOM MEMORY MANGER
-		const size_t 		sizeHeap = 1024 * 1024;
-		const unsigned int 	numDescriptors = 2048;
-		void* pHeapMemory = HeapAlloc(GetProcessHeap(), 0, sizeHeap);
-		manager = create(pHeapMemory, sizeHeap, numDescriptors);
-		
+		EnableDebugMessages(false);
 
 		// START THE GAME
 		int nMoves = 0;
 		char* name = new char[1];
 
-		
+
 
 		// World Init
 		World* world = new World();
 
-		
+
 
 		// Player Init
 		std::cout << "Enter player name\n->";
 		String::ReadString(name);
 		Actor* player = world->SpawnActor(name, Vector2(static_cast<int>(ROWS / 2), static_cast<int>(COLS / 2)));
 		player->AddComponent(new WrapAroundComponent(0, 0, COLS - 1, ROWS - 1));
-		player->AddComponent(new CircleColliderComponent(1.f));
+		player->AddComponent(new CircleColliderComponent(1.f));		// COMMENT OUT THIS LINE TO REMOVE PLAYER COLLISION
 		world->SetPlayerActor(player);
 
 
-		
-		// Create TestMonster
+
+		// Create Single Monster
 		std::cout << "\nEnter monster name\n->";
 		name = new char[1];
 		String::ReadString(name);
@@ -254,14 +206,15 @@ int main()
 		monster->AddComponent(new RandomMovementComponent(10.f));
 		monster->AddComponent(new WrapAroundComponent(0, 0, COLS, ROWS));
 		monster->AddComponent(new CircleColliderComponent(1.f));
-
-
 		
+
+
+
 		// Begin Simulation
 		world->BeginPlayAll();
 		std::thread keyboardInputThread(KeyboardInputThread(world), 0);				// Keyboard input thread
-		std::thread collisionCheckThread(CollisionThread(world), 0);		// Collision input thread
-		
+		std::thread collisionCheckThread(CollisionThread(world), 0);					// Collision input thread
+
 		while (true)
 		{
 			if (world->GetIsGameOver()) break;
@@ -277,16 +230,173 @@ int main()
 		}
 		collisionCheckThread.join();
 		keyboardInputThread.detach();
-		
+
 
 		// Cleaning up
 		world->DeleteAllActors();
 		delete world;
 
 		printf("\n\nYou'll find one undeleted memory in the output which is from the KeyboardInputThread, since it's still waiting for user input and we cannot use join() on it. I decided to detach the thread instead (Temporary fix)\n\n");
+
+		printf("\n\nPress any key to continue...");
+		_getch();
+		system("CLS");
+
+		EnableDebugMessages(true);
+	}
+#endif
+
+
+
+
+	
+#ifdef UNIT_TEST
+	const bool success = MemorySystem_UnitTest();
+	assert(success);
+#endif
+
+
+
+
+
+	
+
+
+	DestroyMemorySystem();
+	
+#if defined(_DEBUG)
+	_CrtDumpMemoryLeaks();
+#endif // _DEBUG
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MACRO
+#define malloc(x) CustomMalloc(x)
+#define free(x) CustomFree(x)
+
+
+
+// UNIT TEST
+bool MemorySystem_UnitTest()
+{
+	const size_t maxAllocations = 10 * 1024;
+	std::vector<void *> AllocatedAddresses;
+
+	long	numAllocs = 0;
+	long	numFrees = 0;
+	long	numCollects = 0;
+
+	size_t totalAllocated = 0;
+
+	// reserve space in AllocatedAddresses for the maximum number of allocation attempts
+	// prevents new returning null when std::vector expands the underlying array
+	AllocatedAddresses.reserve(10 * 1024);
+
+	// allocate memory of random sizes up to 1024 bytes from the heap manager
+	// until it runs out of memory
+	do
+	{
+		const size_t		maxTestAllocationSize = 1024;
+
+		size_t			sizeAlloc = 1 + (rand() & (maxTestAllocationSize - 1));
+
+		void * pPtr = malloc(sizeAlloc);
+
+		// if allocation failed see if garbage collecting will create a large enough block
+		if (pPtr == nullptr)
+		{
+			Collect();
+
+			pPtr = malloc(sizeAlloc);
+
+			// if not we're done. go on to cleanup phase of test
+			if (pPtr == nullptr)
+				break;
+		}
+
+		AllocatedAddresses.push_back(pPtr);
+		numAllocs++;
+
+		totalAllocated += sizeAlloc;
+
+		// randomly free and/or garbage collect during allocation phase
+		const unsigned int freeAboutEvery = 0x07;
+		const unsigned int garbageCollectAboutEvery = 0x07;
+
+		if (!AllocatedAddresses.empty() && ((rand() % freeAboutEvery) == 0))
+		{
+			void * pPtrToFree = AllocatedAddresses.back();
+			AllocatedAddresses.pop_back();
+
+			free(pPtrToFree);
+			numFrees++;
+		}
+		else if ((rand() % garbageCollectAboutEvery) == 0)
+		{
+			Collect();
+
+			numCollects++;
+		}
+
+	}
+	while (numAllocs < maxAllocations);
+
+	// now free those blocks in a random order
+	if (!AllocatedAddresses.empty())
+	{
+		// randomize the addresses
+		std::random_shuffle(AllocatedAddresses.begin(), AllocatedAddresses.end());
+
+		// return them back to the heap manager
+		while (!AllocatedAddresses.empty())
+		{
+			void * pPtrToFree = AllocatedAddresses.back();
+			AllocatedAddresses.pop_back();
+
+			delete[] pPtrToFree;
+		}
+
+		// do garbage collection
+		Collect();
+		// our heap should be one single block, all the memory it started with
+
+		// do a large test allocation to see if garbage collection worked
+		void * pPtr = malloc(totalAllocated / 2);
+
+		if (pPtr)
+		{
+			free(pPtr);
+		}
+		else
+		{
+			// something failed
+			return false;
+		}
+	}
+	else
+	{
+		return false;
 	}
 
-	_CrtDumpMemoryLeaks();
-	return 0;
-#endif
+	// this new [] / delete [] pair should run through your allocator
+	char * pNewTest = new char[1024];
+
+	delete[] pNewTest;
+
+	// we succeeded
+	return true;
 }

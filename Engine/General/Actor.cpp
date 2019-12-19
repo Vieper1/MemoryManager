@@ -5,6 +5,9 @@
 #include "IActorComponent.h"
 #include "World.h"
 
+
+
+
 // Constructors and Destructors
 Actor::Actor(World* world, char* name, Vector2 position)
 {
@@ -76,9 +79,9 @@ void Actor::AddComponent(IActorComponent* actorComponent)
 // Collision
 void Actor::OnCollisionEnter(Actor* otherActor)
 {
-	printf("\n[[[[[Collided with %s]]]]]\n", otherActor->name);
 	if (otherActor == world_->GetPlayerActor() || this == world_->GetPlayerActor())
 	{
+		printf("\n[[[[[%s Collided with %s]]]]]\n", name, otherActor->name);
 		world_->EndPlay();
 	}
 }

@@ -6,6 +6,10 @@
 
 #include "Actor.h"
 
+// THIS IS THE RESOLUTION OF THE GRID IN WHICH YOUR GAME PLAYS
+#define COLS 20
+#define ROWS 20
+
 class World
 {
 public:
