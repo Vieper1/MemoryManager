@@ -1,9 +1,10 @@
 # README FILE | u1261299 | Vishal Naidu
 
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/E-cCZZ2DrjM/0.jpg)](https://www.youtube.com/watch?v=E-cCZZ2DrjM)
+
+
 ### This file describes the Project, "MemoryManager & MonsterChase" which are parts of the FinalExam
-
-
 
 
 
