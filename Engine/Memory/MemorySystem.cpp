@@ -142,35 +142,35 @@ namespace HeapManagerProxy
 
 
 // new/delete
-void * operator new(size_t i_size)
-{
-	if (HeapManagerProxy::MsgsEnabled) printf("new %zu\n", i_size);
-	return HeapManagerProxy::GroupAlloc(i_size);
-}
-void operator delete(void * i_ptr)
-{
-	if (HeapManagerProxy::MsgsEnabled) printf("delete 0x%" PRIXPTR "\n", reinterpret_cast<uintptr_t>(i_ptr));
-	return HeapManagerProxy::GroupFree(i_ptr);
-}
-
-// new[]/delete[]
-void * operator new[](size_t i_size)
-{
-	if (HeapManagerProxy::MsgsEnabled) printf("new [] %zu\n", i_size);
-	return HeapManagerProxy::GroupAlloc(i_size);
-}
-void operator delete[](void * i_ptr)
-{
-	if (HeapManagerProxy::MsgsEnabled) printf("delete [] 0x%" PRIXPTR "\n", reinterpret_cast<uintptr_t>(i_ptr));
-	return HeapManagerProxy::GroupFree(i_ptr);
-}
-
-// custom new to force usage of PoolAllocator
-void * operator new(size_t i_size, bool shouldForcePool)
-{
-	if (HeapManagerProxy::MsgsEnabled) printf("new %zu\n", i_size);
-	if (shouldForcePool)
-		return HeapManagerProxy::pool->_alloc(i_size, 4);
-	else
-		return HeapManagerProxy::GroupAlloc(i_size);
-}
+//void * operator new(size_t i_size)
+//{
+//	if (HeapManagerProxy::MsgsEnabled) printf("new %zu\n", i_size);
+//	return HeapManagerProxy::GroupAlloc(i_size);
+//}
+//void operator delete(void * i_ptr)
+//{
+//	if (HeapManagerProxy::MsgsEnabled) printf("delete 0x%" PRIXPTR "\n", reinterpret_cast<uintptr_t>(i_ptr));
+//	return HeapManagerProxy::GroupFree(i_ptr);
+//}
+//
+//// new[]/delete[]
+//void * operator new[](size_t i_size)
+//{
+//	if (HeapManagerProxy::MsgsEnabled) printf("new [] %zu\n", i_size);
+//	return HeapManagerProxy::GroupAlloc(i_size);
+//}
+//void operator delete[](void * i_ptr)
+//{
+//	if (HeapManagerProxy::MsgsEnabled) printf("delete [] 0x%" PRIXPTR "\n", reinterpret_cast<uintptr_t>(i_ptr));
+//	return HeapManagerProxy::GroupFree(i_ptr);
+//}
+//
+//// custom new to force usage of PoolAllocator
+//void * operator new(size_t i_size, bool shouldForcePool)
+//{
+//	if (HeapManagerProxy::MsgsEnabled) printf("new %zu\n", i_size);
+//	if (shouldForcePool)
+//		return HeapManagerProxy::pool->_alloc(i_size, 4);
+//	else
+//		return HeapManagerProxy::GroupAlloc(i_size);
+//}

@@ -2,14 +2,15 @@
 
 #include "Actor.h"
 #include "../Math/Math.h"
-#include "IActorComponent.h"
+#include "Components/IActorComponent.h"
 #include "World.h"
+#include "Components/Physics.h"
 
 
 
 
-// Constructors and Destructors
-Actor::Actor(World* world, char* name, Vector2 position)
+////////////////////////////////////////////////////////////////////// Constructors and Destructors
+Actor::Actor(World* world, const std::string name, Vector2 position)
 {
 	this->name = name;
 	this->position = position;
@@ -17,8 +18,6 @@ Actor::Actor(World* world, char* name, Vector2 position)
 }
 Actor::~Actor()
 {
-	delete[] this->name;
-
 	for (IActorComponent* component : mComponents)
 	{
 		delete component;
@@ -31,13 +30,19 @@ Actor &Actor::operator = (const Actor &other)
 	this->world_ = other.world_;
 	return *this;
 }
-// Constructors and Destructors
+////////////////////////////////////////////////////////////////////// Constructors and Destructors
 
 
 
 
 
-// BeginPlay and Tick
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////// BeginPlay & Tick
 void Actor::BeginPlay()
 {
 	const size_t nComponents = mComponents.size();
@@ -45,44 +50,71 @@ void Actor::BeginPlay()
 	{
 		if (mComponents[i])
 		{
-			mComponents[i]->BeginPlay(*this);
+			mComponents[i]->BeginPlay();
 		}
 	}
 }
-void Actor::Tick()
+void Actor::Tick(const float DeltaSeconds)
 {
 	const size_t nComponents = mComponents.size();
 	for (size_t i = 0; i < nComponents; i++)
 	{
 		if (mComponents[i])
 		{
-			mComponents[i]->Tick(*this);
+			mComponents[i]->Tick(DeltaSeconds);
 		}
 	}
 }
+////////////////////////////////////////////////////////////////////// BeginPlay & Tick
 
 
 
-// BeginPlay and Tick
 
 
-// Components
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////// Components
 void Actor::AddComponent(IActorComponent* actorComponent)
 {
 	if (actorComponent)
 		mComponents.push_back(actorComponent);
 }
-// Components
+////////////////////////////////////////////////////////////////////// Components
 
 
 
-// Collision
-void Actor::OnCollisionEnter(Actor* otherActor)
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////// Components
+void Actor::OnCollisionStay(SmartPtr<Actor> & otherActor)
 {
-	if (otherActor == world_->GetPlayerActor() || this == world_->GetPlayerActor())
+	if (otherActor == world_->GetPlayerActor() || world_->GetPlayerActor() == this)
 	{
-		printf("\n[[[[[%s Collided with %s]]]]]\n", name, otherActor->name);
-		world_->EndPlay();
+		PhysicsComponent * otherComp = otherActor->GetComponent<PhysicsComponent>();
+		PhysicsComponent * myComp = GetComponent<PhysicsComponent>();
+
+		if (otherComp && myComp)
+		{
+			myComp->AddForce((position - otherActor->position).getNormalized() * 10.0f, true);
+		}
 	}
 }
-// Collision
+
+void Actor::OnHit(SmartPtr<Actor> & otherActor)
+{
+	
+}
+////////////////////////////////////////////////////////////////////// Components

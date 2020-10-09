@@ -1,9 +1,6 @@
 #pragma once
 
-#include "time.h"
-#include "Vector.h"
-#include <iostream>
-#include <random>
+#include <ctime>
 
 
 class Math {
@@ -16,13 +13,52 @@ public:
 		return min + (rand() % (max - min));
 	}
 
-	//static inline int randomNew(const int min, const int max)
-	//{
-	//	std::random_device rd; // obtain a random number from hardware
-	//	std::mt19937 eng(rd()); // seed the generator
-	//	std::uniform_int_distribution<> distr(25, 63); // define the range
+	static inline bool IsNearlyEqual(const float a, const float b, const float minPrecision = 0.0001f)
+	{
+		const float diff = fabs(a - b);
+		const float absA = fabs(a);
+		const float absB = fabs(b);
 
-	//	return min + (distr(eng) / 100 * (max - min));
-	//}
+		const float largest = (absB > absA) ? absB : absA;
+		if (diff <= largest * minPrecision)
+			return true;
+		return false;
+	}
+
+	static inline bool IsNearlyZero(const float value, const float errorTolerance = 0.0001f)
+	{
+		return fabs(value) <= errorTolerance;
+	}
+
+	static inline bool IsNaN(const float value)
+	{
+		if (value != value)
+			return true;
+		return false;
+	}
+
+	static inline float clamp(const float input, const float min, const float max)
+	{
+		if (input < min)
+			return min;
+		if (input > max)
+			return max;
+		return input;
+	}
+
+	static inline bool clampRef(float & input, const float min, const float max)
+	{
+		if (input < min)
+		{
+			input = min;
+			return true;
+		}
+		if (input > max)
+		{
+			input = max;
+			return true;
+		}
+		return false;
+	}
 };
 

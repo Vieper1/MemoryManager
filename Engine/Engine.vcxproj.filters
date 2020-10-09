@@ -34,6 +34,51 @@
     <Filter Include="Source Files\String">
       <UniqueIdentifier>{b2812732-c0ae-44c8-b650-1c60a3715597}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\General\Components">
+      <UniqueIdentifier>{46187728-5eaf-43e2-97b3-2493b6c52b40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Memory\SmartPointer">
+      <UniqueIdentifier>{d0d2b6da-2530-4b50-b7a0-55e11c8b6c80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render">
+      <UniqueIdentifier>{2df2c4d2-8cdb-4afd-9512-ad61f1eb6bf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Jobs">
+      <UniqueIdentifier>{cfe56c9f-1c35-47e3-b83e-5c853b4679d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Jobs">
+      <UniqueIdentifier>{e8c37ceb-cf9f-4421-9bbd-efbeaf68f010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Jobs\Console">
+      <UniqueIdentifier>{773000ef-7957-4076-ae22-41996235a762}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Jobs\HashedString">
+      <UniqueIdentifier>{706ff25c-9d59-4a1b-98eb-364b95b3041b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Jobs\JobSystem">
+      <UniqueIdentifier>{50d06f3a-5623-4453-bb4c-94a5b0f29d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Jobs\Synchronization">
+      <UniqueIdentifier>{633621b2-1a2d-4594-b951-4f4aff6031e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Jobs\Console">
+      <UniqueIdentifier>{f019dabf-989a-41bf-9c14-f622a17e3675}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Jobs\HashedString">
+      <UniqueIdentifier>{c9421643-e2f4-43d4-a560-2e10ecc52ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Jobs\JobSystem">
+      <UniqueIdentifier>{e66f519e-c8a4-4e23-947d-e2ff517243d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Jobs\Synchronization">
+      <UniqueIdentifier>{4b5b03a2-45c7-43db-a111-88e1b4bfd757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\General\Systems">
+      <UniqueIdentifier>{3cb6d948-4e87-47ba-b4fd-38e809e12433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\General\Systems">
+      <UniqueIdentifier>{29eead44-427f-4d69-abcb-97e50fb484ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="General\Actor.h">
@@ -44,12 +89,6 @@
     </ClInclude>
     <ClInclude Include="Math\Vector.h">
       <Filter>Header Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="General\IActorComponent.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="General\CustomComponents.h">
-      <Filter>Header Files\General</Filter>
     </ClInclude>
     <ClInclude Include="General\World.h">
       <Filter>Header Files\General</Filter>
@@ -68,6 +107,102 @@
     </ClInclude>
     <ClInclude Include="Memory\MemorySystem.h">
       <Filter>Header Files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Components\CircleCollider.h">
+      <Filter>Header Files\General\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Components\IActorComponent.h">
+      <Filter>Header Files\General\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Components\Physics.h">
+      <Filter>Header Files\General\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\SmartPointer\SmartPtr.h">
+      <Filter>Header Files\Memory\SmartPointer</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\SmartPointer\WeakPtr.h">
+      <Filter>Header Files\Memory\SmartPointer</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\SmartPointer\RefCount.h">
+      <Filter>Header Files\Memory\SmartPointer</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Components\Follow.h">
+      <Filter>Header Files\General\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\Console\ConsolePrint.h">
+      <Filter>Header Files\Jobs\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\HashedString\HashedString-inl.h">
+      <Filter>Header Files\Jobs\HashedString</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\HashedString\HashedString.h">
+      <Filter>Header Files\Jobs\HashedString</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\JobSystem\SharedJobQueue.h">
+      <Filter>Header Files\Jobs\JobSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\JobSystem\SharedJobQueue-inl.h">
+      <Filter>Header Files\Jobs\JobSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\JobSystem\IJob.h">
+      <Filter>Header Files\Jobs\JobSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\JobSystem\INamed.h">
+      <Filter>Header Files\Jobs\JobSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\JobSystem\JobRunner.h">
+      <Filter>Header Files\Jobs\JobSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\JobSystem\JobSystem.h">
+      <Filter>Header Files\Jobs\JobSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\Syncronization\Semaphore.h">
+      <Filter>Header Files\Jobs\Synchronization</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\Syncronization\SingleWriterMultipleReader.h">
+      <Filter>Header Files\Jobs\Synchronization</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\Syncronization\WaitableObject.h">
+      <Filter>Header Files\Jobs\Synchronization</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\Syncronization\Events.h">
+      <Filter>Header Files\Jobs\Synchronization</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\Syncronization\Mutex.h">
+      <Filter>Header Files\Jobs\Synchronization</Filter>
+    </ClInclude>
+    <ClInclude Include="Jobs\Syncronization\ScopeLock.h">
+      <Filter>Header Files\Jobs\Synchronization</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector4.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Components\BoxCollider.h">
+      <Filter>Header Files\General\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix4.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix3.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector3.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\GLibHelper.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\pchMath.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\SmartPointer\SmartPtrConversion.h">
+      <Filter>Header Files\Memory\SmartPointer</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Systems\CollisionSystem.h">
+      <Filter>Header Files\General\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Systems\Input.h">
+      <Filter>Header Files\General\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +226,39 @@
     </ClCompile>
     <ClCompile Include="Memory\MemorySystem.cpp">
       <Filter>Source Files\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\Console\ConsolePrint.Win32.cpp">
+      <Filter>Source Files\Jobs\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\HashedString\HashedString.cpp">
+      <Filter>Source Files\Jobs\HashedString</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\JobSystem\SharedJobQueue.cpp">
+      <Filter>Source Files\Jobs\JobSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\JobSystem\IJob.cpp">
+      <Filter>Source Files\Jobs\JobSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\JobSystem\JobRunner.cpp">
+      <Filter>Source Files\Jobs\JobSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\JobSystem\JobSystem.cpp">
+      <Filter>Source Files\Jobs\JobSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\Syncronization\Events.cpp">
+      <Filter>Source Files\Jobs\Synchronization</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\Syncronization\Mutex.cpp">
+      <Filter>Source Files\Jobs\Synchronization</Filter>
+    </ClCompile>
+    <ClCompile Include="Jobs\Syncronization\Semaphore.cpp">
+      <Filter>Source Files\Jobs\Synchronization</Filter>
+    </ClCompile>
+    <ClCompile Include="General\Systems\CollisionSystem.cpp">
+      <Filter>Source Files\General\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="General\Systems\Input.cpp">
+      <Filter>Source Files\General\Systems</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

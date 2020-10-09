@@ -3,8 +3,8 @@
 class Vector2 {
 public:
 	Vector2() {
-		this->x = x;
-		this->y = y;
+		this->x = 0;
+		this->y = 0;
 	}
 	
 	Vector2(float x, float y) {
@@ -18,18 +18,31 @@ public:
 		y = other.y;
 		return *this;
 	}
-	inline bool operator == (const Vector2 other) {
+	inline bool operator == (const Vector2 other) const {
 		if (x == other.x && y == other.y)
 			return true;
 		else
 			return false;
 	}
-	inline bool operator != (const Vector2 &other) {
+	inline bool operator != (const Vector2 &other) const {
 		return !(*this == other);
 	}
 
 	// MATH
-	inline Vector2 operator - () {
+	inline Vector2 getInverse() const
+	{
+		return Vector2{ -x, -y };
+	}
+	inline float getMagnitude() const
+	{
+		return sqrt(x * x + y * y);
+	}
+	inline Vector2 getNormalized() const
+	{
+		const float mag = getMagnitude();
+		return Vector2{x / mag, y / mag};
+	}
+	inline Vector2 operator - () const {
 		return Vector2{-x, -y};
 	}
 	inline Vector2 operator += (const Vector2 other) {

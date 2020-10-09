@@ -1,0 +1,1107 @@
+{
+    "actors": [
+        {
+            "name": "Ghost",
+            "sprite-path": "Assets\\WhiteSquareArrow.dds",
+            "initial-position": [-100.0, -150.0],
+            "player-actor": false,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            "name": "Brick1",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [0.0, 200.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick2",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-100.0, 200.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick3",
+             "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [100.0, 200.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick4",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-200.0, 200.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick5",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [200.0, 200.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick6",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-300.0, 200.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick7",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [300.0, 200.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        
+
+
+
+
+
+
+
+
+        
+        {
+            "name": "Brick8",
+            "sprite-path": "Assets\\BrickRed.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [50.0, 100.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick9",
+            "sprite-path": "Assets\\BrickRed.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-50.0, 100.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick10",
+            "sprite-path": "Assets\\BrickRed.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [150.0, 100.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick11",
+            "sprite-path": "Assets\\BrickRed.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-150.0, 100.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick12",
+            "sprite-path": "Assets\\BrickRed.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [250.0, 100.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick13",
+            "sprite-path": "Assets\\BrickRed.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-250.0, 100.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+
+
+
+
+
+
+
+
+        {
+            "name": "Brick14",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [0.0, 0.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick15",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-100.0, 0.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick16",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [100.0, 0.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick17",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-200.0, 0.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick18",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [200.0, 0.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick19",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [-300.0, 0.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+        {
+            "name": "Brick20",
+            "sprite-path": "Assets\\BrickGreen.dds",
+            "destroyed-on-hit": true,
+            "player-actor": false,
+            "mobility": "static",
+            "initial-position": [300.0, 0.0],
+            "initial-rotation": 0.0,
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 10,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [50.0, 25.0]
+                }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            "name": "WallL1",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-400.0, 0.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallL2",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-400.0, 100.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallL3",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-400.0, 200.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallL4",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-400.0, 300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallL5",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-400.0, -100.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallL6",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-400.0, -200.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallL7",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-400.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            "name": "WallR1",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [400.0, 0.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallR2",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [400.0, 100.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallR3",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [400.0, 200.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallR4",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [400.0, 300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallR5",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [400.0, -100.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallR6",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [400.0, -200.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallR7",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [400.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            "name": "WallT1",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [0.0, 320.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallT2",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [100.0, 320.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallT3",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [200.0, 320.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallT4",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [300.0, 320.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallT6",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-100.0, 320.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallT7",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-200.0, 320.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallT8",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-300.0, 320.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+        {
+            "name": "WallB1",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [0.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallB2",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [100.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallB3",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [200.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallB4",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [300.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallB6",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-100.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallB7",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-200.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        },
+        {
+            "name": "WallB8",
+            "sprite-path": "Assets\\Square.dds",
+            "initial-position": [-300.0, -300.0],
+            "player-actor": false,
+            "mobility": "static",
+            "components": [
+                {
+                    "type": "PhysicsComponent",
+                    "mass": 1,
+                    "gravity-scale": 0,
+                    "linear-drag": 0.1
+                },
+                {
+                    "type": "BoxColliderComponent",
+                    "size": [100.0, 100.0]
+                }
+            ]
+        }
+
+
+
+
+
+
+
+
+
+    ]
+}
