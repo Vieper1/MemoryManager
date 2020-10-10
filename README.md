@@ -69,13 +69,29 @@ Features:
 Features:
   1. <b>Swept-Axis Collision Check</b> formula to deflect off 2-objects with an <b>Impending Collision</b> that's <b>Less Than 1-frame-time</b>
   2. <b>Inter-Frame-Time-Forwarding</b> to resolve more than 2 objects in collison sequentially
+  3. <b>Object can register a callback</b> to get notified when it's colliding with anything
+
+
+
+</br></br>
+
+## Unreal's Actor Hierarchy System
+Implemented a World class which handles
+  1. Actor Spawning (With and without JSON for prefab)
+  2. BeginPlay()
+  3. EventTick()
+  4. Pause
+  5. Quit
+  6. Cleanup
+
+
+
+
+
+
 
 
 </br></br></br></br></br></br>
-
-
-
-
 
 #  GAME FEATURES
 
@@ -88,48 +104,3 @@ How to play the game:
 
 NOTE:	The walls comprise of white square bricks placed close to each other. Each reflect the ball in a random direction to give a sense of randomness to the game
 	(Not really an interesting feature, but I just had in there since it makes it fun)
-
-
-
-The following is a list of features you'd find in my Pong game:
-
-1. I noticed GLib's input handler gives you callbacks with each button press/release, so I used that to update a std::vector<uints> in Input.h every time there's a key callback
-   This let me have a "Keyboard_IsKeyDown(uint Button_ID)" function similar to that in Unity
-
-	- Engine/Systems/Input.h/cpp				=> key data handled here
-	- CppAssignments/MonsterChase.cpp			=> usage of Keyboard_IsKeyDown(uint Button_ID)
-
-
-2. Uses a SmartPtr/WeakPtr system
-	- Only the property "std::vector<SmartPtr<Actor>> actors" in World holds references to the actors
-	- There's a WeakPtr copy of the actors, which is used to distribute weak references to observer systems
-	- Systems like Components (Physics, Box/CircleColliders, Follow), CollisionSystem, Input depend on the weak referernces and try to acquire full refs to work with
-
-
-3. Implemented a World class which handles
-	- Engine/General/World.h
-	- Engine/General/World.cpp
-
-   a. Actor Spawning (With and without JSON for prefab)
-   b. BeginPlay()
-   c. EventTick()
-   d. Pause
-   e. Quit
-   f. Cleanup - Deleting all actors | Stop GLib Service
-
-4. Physics Components
-	- Each actor with an attached PhysicsComponent will have simulated motion with forces leading to linear acceleration
-	- Drag forces included
-	- X/Y constraints to lock movement in one/both axes
-	- AddForce() function accumulates impending forces before applying them together in one Tick()
-
-5. Math
-	- Math.h provides some basic functionality like randomRange(), clamp(), isNearlyZero/Equal()
-	- Vector classes for sizes 2, 3, 4
-	- Matrix classes for sizes 3, 4
-	- Matrix classes with transform matrices for translation, rotation and scaling
-
-6. Collision
-	- Uses the Swept-Axis collision check method to identify impending collisions
-	- Calls on the actors' OnCollisionStay() and OnHit() functions when impending collision is found
-	- Forwards all objects to the latest resolved impending collision time
