@@ -2,11 +2,12 @@
 This is a game engine I built from scratch on C++ </br>
 It includes the following systems:</br>
   1. A <b>Linear Memory-Pool</b> Allocator
-  2. A <b>Custom Smart-Pointer</b> System
-  3. A <b>2D-Physics</b> Engine
-  4. A <b>Box-2D Collision</b> Engine
-  5. Unreal's <b>Actor Hierarchy</b> System (To build Player & NPC actors from)
-  6. Dynamic <b>Component Attachment</b> System (E.g. Keyboard Inputs, Box Collider, Circle Collider)
+  2. A <b>Fixed Size</b> Allocator
+  3. A <b>Custom Smart-Pointer</b> System
+  4. A <b>2D-Physics</b> Engine
+  5. A <b>Box-2D Collision</b> Engine
+  6. Unreal's <b>Actor Hierarchy</b> System (To build Player & NPC actors from)
+  7. Dynamic <b>Component Attachment</b> System (E.g. Keyboard Inputs, Box Collider, Circle Collider)
 
 </br>
 
@@ -18,14 +19,19 @@ Here's a list of all the unique features the MemoryManager has:
 	- The FSA is able to store anything <b>less than its BLOCK SIZE</b> to be stored in the <b>first free block</b>
 	- This one's <b>highly efficient</b> because of the <a href="https://github.com/Vieper1/MemoryManager/blob/part2/Engine/Memory/BitArray.cpp">BIT-ARRAY State-Keeper</a>
 
+![Fixed Size Allocator](FixedSizeAllocator.png)
+
 </br>
 
-2. Backup Allocator => Pool Allocator
+2. Backup Allocator => <b>Pool Allocator</b>
 	- <a href="https://github.com/Vieper1/MemoryManager/blob/part2/Engine/Memory/PoolAllocator.h">Header</a> | <a href="https://github.com/Vieper1/MemoryManager/blob/part2/Engine/Memory/PoolAllocator.cpp">C++</a>
 	- The <b>Memory-Pool</b> style allocator allocates blocks <b>linearly</b> regardless of their size
 	- There's a <b>ratio of the TOTAL POOL SIZE</b> that stores <b>metadata</b> for each of the allocated blocks
 
+![Memory Pool Allocator](MemoryPoolAllocator.png)
+
 </br>
+
 
 3. The MemorySystem regulates the calls to the 3 FSAs or the Pool Allocator
 based on the size of the request
