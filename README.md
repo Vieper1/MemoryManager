@@ -11,6 +11,12 @@ It includes the following systems:</br>
 
 </br>
 
+<b>NOTE:</b> Git doesn't recognize changes to the solution's Default Project. So you'd have to select Pong as the Default Startup Project under the Solution's Properties in Visual Studio
+
+</br>
+
+
+
 ##  Memory Allocation System
 Here's a list of all the unique features the MemoryManager has:
 
